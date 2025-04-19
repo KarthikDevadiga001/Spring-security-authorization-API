@@ -11,9 +11,9 @@ import java.net.http.HttpRequest;
 @RestController
 public class HelloController {
 
-    @GetMapping("/helloji")
+    @GetMapping("/hello")
     public String greet(HttpServletRequest request){
-        return "welcome to hun ki gall kitta"+  request.getSession().getId();
+        return "hello "+  request.getSession().getId();
     }
 
 }

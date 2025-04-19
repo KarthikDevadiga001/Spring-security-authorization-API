@@ -50,6 +50,25 @@ public class MyUserDetailsService implements UserDetailsService {
                 }
             };
 
+            UserDetails admindetails=new UserDetails() {
+
+                GrantedAuthority auth=new SimpleGrantedAuthority("ADMIN");
+                @Override
+                public Collection<? extends GrantedAuthority> getAuthorities() {
+                    return  Collections.singleton(auth);
+                }
+
+                @Override
+                public String getPassword() {
+                    return user.getPassword();
+                }
+
+                @Override
+                public String getUsername() {
+                    return username;
+                }
+            };
+
             return userdetails;
 
 

@@ -27,8 +27,6 @@ public class JWTFilter extends OncePerRequestFilter {
     JWTservice jwtservice;
     @Autowired
     ApplicationContext context;
-
-
     @Autowired
     MyUserDetailsService userDetailsService;
 
@@ -47,6 +45,9 @@ public class JWTFilter extends OncePerRequestFilter {
         if(username!=null&& SecurityContextHolder.getContext().getAuthentication()==null){
 
             UserDetails userDetails=context.getBean(MyUserDetailsService.class).loadUserByUsername(username);
+
+//            MyUserDetailsService obj=context.getBean(MyUserDetailsService.class);
+//            UserDetails userDetails=obj.loadUserByUsername(username);
 
             if(jwtservice.validateToken(token,userDetails)){
 
