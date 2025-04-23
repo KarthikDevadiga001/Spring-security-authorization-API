@@ -1,6 +1,6 @@
 # Spring-security-authorization-API
 
-A clean, modular Spring Boot-based authorization system using BCrypt encoder and JWT tokens. Designed for extensibility and security, without OAuth dependencies.
+A clean, modular Spring Boot-based custom role based authorization system using BCrypt encoder and JWT tokens. Designed for extensibility and security, without OAuth dependencies.
 
 ---
 
@@ -10,6 +10,8 @@ A clean, modular Spring Boot-based authorization system using BCrypt encoder and
 - JWT-based authentication with expiration and refresh support
 - Spring Security integration
 - Modular folder structure
+- Authority-based request filtering
+- Protected endpoints using role restrictions
 
 ---
 
