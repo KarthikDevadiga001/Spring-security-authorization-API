@@ -8,11 +8,12 @@ import lombok.Data;
 
 @Data
 @Entity
-@Table(name="userauth")
+@Table(name = "userauth")
 public class User {
     @Id
     private String username;
     private String password;
+    private String role;
 
 
 }

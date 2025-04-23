@@ -9,12 +9,12 @@ import java.util.Arrays;
 import java.util.List;
 
 @Repository
-public class MemberRepository{
+public class MemberRepository {
 
-    List<FamilyMember> familymembers=new ArrayList<>(Arrays.asList(
-            new FamilyMember(21,"kiran",170, 73.5F,List.of("lactose intolerant","red meat"),List.of("thyroid")),
-            new FamilyMember(56,"kavita",160, 63.5F,null,List.of("thyroid")),
-            new FamilyMember(59,"kumar",168, 78.5F,List.of("red meat"),null)
+    List<FamilyMember> familymembers = new ArrayList<>(Arrays.asList(
+            new FamilyMember(21, "kiran", 170, 73.5F, List.of("lactose intolerant", "red meat"), List.of("thyroid")),
+            new FamilyMember(56, "kavita", 160, 63.5F, null, List.of("thyroid")),
+            new FamilyMember(59, "kumar", 168, 78.5F, List.of("red meat"), null)
     ));
 
 

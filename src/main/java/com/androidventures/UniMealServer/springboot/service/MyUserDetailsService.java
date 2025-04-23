@@ -21,55 +21,37 @@ public class MyUserDetailsService implements UserDetailsService {
 
     @Autowired
     UserRepo repo;
+
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 
-            User user =repo.findByUsername(username);
-            if(user==null)
-            {
-                System.out.println("User not found ");
-                throw new UsernameNotFoundException("error 404");
+        User user = repo.findByUsername(username);
+        if (user == null) {
+            System.out.println("User not found ");
+            throw new UsernameNotFoundException("error 404");
+        }
+
+        UserDetails userdetails = new UserDetails() {
+
+            GrantedAuthority auth = new SimpleGrantedAuthority("ROLE_" + user.getRole());
+
+            @Override
+            public Collection<? extends GrantedAuthority> getAuthorities() {
+                return Collections.singleton(auth);
             }
 
-            UserDetails userdetails=new UserDetails() {
+            @Override
+            public String getPassword() {
+                return user.getPassword();
+            }
 
-                GrantedAuthority auth=new SimpleGrantedAuthority("USER");
-                @Override
-                public Collection<? extends GrantedAuthority> getAuthorities() {
-                    return  Collections.singleton(auth);
-                }
+            @Override
+            public String getUsername() {
+                return username;
+            }
+        };
 
-                @Override
-                public String getPassword() {
-                    return user.getPassword();
-                }
-
-                @Override
-                public String getUsername() {
-                    return username;
-                }
-            };
-
-            UserDetails admindetails=new UserDetails() {
-
-                GrantedAuthority auth=new SimpleGrantedAuthority("ADMIN");
-                @Override
-                public Collection<? extends GrantedAuthority> getAuthorities() {
-                    return  Collections.singleton(auth);
-                }
-
-                @Override
-                public String getPassword() {
-                    return user.getPassword();
-                }
-
-                @Override
-                public String getUsername() {
-                    return username;
-                }
-            };
-
-            return userdetails;
+        return userdetails;
 
 
     }

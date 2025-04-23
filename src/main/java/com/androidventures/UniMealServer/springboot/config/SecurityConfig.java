@@ -43,9 +43,14 @@ public class SecurityConfig {
     public SecurityFilterChain securityfilterchain(HttpSecurity http) throws Exception {
         return http.csrf(cheesecustomizer -> cheesecustomizer.disable())
                 .authorizeHttpRequests(request -> request
-                        .requestMatchers("register", "login","oauth2")
+                        .requestMatchers("register", "login", "oauth2")
+
                         .permitAll()
+                        .requestMatchers("/admin/***").hasRole("ADMIN")
+                        .requestMatchers("/user/***").hasRole("USER")
                         .anyRequest().authenticated())
+
+
 //                .oauth2Login(oauth2 -> oauth2
 //                        .loginPage("/login"))
 //                        .userInfoEndpoint(userInfo -> userInfo

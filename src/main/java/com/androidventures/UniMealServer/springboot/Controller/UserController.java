@@ -19,19 +19,21 @@ public class UserController {
     AuthenticationManager authenticationManager;
     @Autowired
     JWTservice jwt;
+
     @PostMapping("register")
-    public User register(@RequestBody User user){
+    public User register(@RequestBody User user) {
 
         return userservice.save(user);
     }
+
     @PostMapping("login")
-    public String login(@RequestBody User user){
+    public String login(@RequestBody User user) {
 
-        Authentication authentication=authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(user.getUsername(),user.getPassword()));
+        Authentication authentication = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(user.getUsername(), user.getPassword()));
 
-        if(authentication.isAuthenticated()){
+        if (authentication.isAuthenticated()) {
             return jwt.generateToken(user.getUsername());
-        }else{
+        } else {
             return "error login failed";
         }
     }
