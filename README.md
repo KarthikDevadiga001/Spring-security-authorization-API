@@ -26,9 +26,6 @@ A clean, modular Spring Boot-based custom role based authorization system using 
 - JWT (Java Web Token)
 - Maven
 
-
-
-
 ---
 
 ## 📦 Setup
